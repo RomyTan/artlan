@@ -1,0 +1,408 @@
+:root {
+  background-color: #0e0e0e;
+  color: #f5f5f5;
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0 40px;
+  background-color: #0a0a0a00 !important;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ================== NAV SECTION ================== */
+.logo-img {
+  height: 24px;
+  width: auto;
+  display: block;
+}
+
+.logo {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 300;
+}
+
+/* Styling dasar untuk semua link di navbar */
+.nav-links a {
+  color: #B7AB98; /* Warna theme ente */
+  text-decoration: none;
+  margin-left: 30px;
+  font-size: 0.9rem;
+  position: relative;
+  transition: color 0.3s ease;
+  display: inline-block;
+  min-width: 80px; /* Atur supaya pas dengan kata terpanjang */
+  text-align: center;
+}
+
+/* Membuat bracket "gaib" untuk semua link */
+.nav-links a::before {
+  content: "[";
+  margin-right: 8px;
+  opacity: 0; /* Awalnya tidak kelihatan */
+  transition: opacity 0.3s ease;
+  color: #444; 
+}
+
+.nav-links a::after {
+  content: "]";
+  margin-left: 8px;
+  opacity: 0; /* Awalnya tidak kelihatan */
+  transition: opacity 0.3s ease;
+  color: #444;
+}
+
+/* Efek Hover: Munculkan bracket saat mouse di atas menu */
+.nav-links a:hover::before,
+.nav-links a:hover::after {
+  opacity: 1;
+}
+
+.nav-links a:hover {
+  color: #EB5939; /* Warna highlight pas di hover */
+}
+
+/* State Aktif: Bracket tetap muncul di halaman yang sedang dibuka */
+.nav-links a.active {
+  color: #EB5939;
+}
+
+.nav-links a.active::before,
+.nav-links a.active::after {
+  opacity: 1;
+}
+
+/* ================== HERO SECTION ================== */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 0vh;
+  width: 100%;
+}
+
+.hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; /* sejajar garis bawah */
+  width: 100%;
+  margin-top: 6vh;
+}
+
+.hero h1 {
+  
+  line-height: 0.95;
+  margin-top: 100px;
+  margin-bottom: 80px;
+}
+
+.hero h1 .T1 {
+  font-size: 102px;
+  font-weight: 500;
+  color: #B7AB98;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.hero h1 .T2 {
+  font-size: 102px;
+  font-weight: 700;
+  color: #EB5939;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.hero h1 .T3 {
+  margin-top: 10px;
+  font-size: 82px;
+  font-weight: 500;
+  color: #B7AB98;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              filter 0.5s ease, 
+              transform 0.5s ease;
+  display: inline-block;
+}
+
+.hero h1 .T3.fade-out {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(10px); /* Efek turun sedikit pas hilang */
+  pointer-events: none;
+}
+
+.hero-details {
+  display: flex;
+  gap: 80px; /* Jarak antar kolom detail */
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: left;
+  color: #B7AB98;
+  padding-bottom: 80px; /* Adjust sedikit biar benar-benar pas dengan baseline font h1 */
+}
+
+.detail-item p {
+  white-space: pre-line;
+  line-height: 1.4;
+  min-height: 2.8em;
+  margin: 0;
+}
+
+.detail-item {
+  flex: 1;
+}
+
+.detail-item:nth-child(2) {
+  text-align: center; /* Designer & Developer di tengah */
+}
+
+.detail-item:last-child {
+  text-align: right; /* Jam dan Lokasi di kanan */
+}
+
+/* ================== PROJECT SECTION ================== */
+.projects {
+  margin-top: 30px;
+  padding-bottom: 30px;
+}
+
+.swipe-hint {
+  display: none;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 2 Kolom di Desktop */
+  gap: 60px 40px; /* Jarak antar item (atas-bawah, kiri-kanan) */
+}
+
+.project-item {
+  cursor: pointer;
+  width: 100%;
+}
+
+.project-img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21 / 9; /* Rasio */
+  overflow: hidden;
+  background-color: #1a1a1a00;
+  border-radius: 2px;
+}
+
+.bracket {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid rgba(183, 171, 152, 0.4); /* Warna krem transparan */
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+}
+
+.bt-l { top: 15px; left: 15px; border-right: none; border-bottom: none; }
+.bt-r { top: 15px; right: 15px; border-left: none; border-bottom: none; }
+.bb-r { bottom: 15px; right: 15px; border-left: none; border-top: none; }
+.bb-l { 
+  bottom: 15px; left: 15px; 
+  border-right: none; border-top: none; 
+  border-color: #EB5939; /* Oranye T2 */
+}
+
+.project-item:hover .bt-l { transform: translate(-5px, -5px); opacity: 1; }
+.project-item:hover .bt-r { transform: translate(5px, -5px); opacity: 1; }
+.project-item:hover .bb-l { transform: translate(-5px, 5px); opacity: 1; }
+.project-item:hover .bb-r { transform: translate(5px, 5px); opacity: 1; }
+
+.project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+}
+
+/* HOVER EFFECT */
+.project-item:hover .project-img img {
+  transform: scale(1.05); /* Gambar zoom dikit */
+  filter: grayscale(0);    /* Gambar jadi berwarna */
+}
+
+.project-details {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin-top: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  color: #B7AB98; /* Sesuaikan dengan warna theme ente */
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.p-title {
+  color: #B7AB98;
+  font-weight: bold;
+}
+
+/* Saat grid disentuh, semua item defaultnya mengecil & blur */
+.project-grid:hover .project-item {
+  filter: blur(5px);
+  opacity: 0.5;
+  transform: scale(0.95);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hanya item yang di-hover yang tetap tajam dan ukurannya normal */
+.project-grid .project-item:hover {
+  filter: blur(0);
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Responsif buat HP */
+@media (max-width: 768px) {
+  body {
+    display: block;
+    min-height: 100vh;
+    padding: 0 20px;
+  }
+
+  .navbar {
+    padding: 20px 0;
+    width: 100%;
+  }
+
+  .hero-content {
+    flex-direction: column; /* Tumpuk H1 dan Details secara vertikal */
+    align-items: flex-start; /* Semua rata kiri */
+    gap: 40px; /* Kasih jarak antara tulisan 2011 dan info detail */
+  }
+
+  .hero h1 .T1, 
+  .hero h1 .T2 {
+    font-size: 72px; /* Perkecil font di HP biar nggak kepotong */
+    line-height: 0.9;
+  }
+
+  .hero h1 .T3 {
+    font-size: 48px;
+    line-height: 1;
+  }
+
+  .hero-details {
+    display: none;
+    width: 100%;
+    justify-content: flex-start; /* Balikin ke kiri */
+    gap: 30px;
+    padding-bottom: 0;
+    margin-left: 0; /* Hapus margin-left auto biar nggak maksa ke kanan */
+  }
+
+  .detail-item {
+    flex: none; /* Biar lebarnya sesuai konten */
+  }
+
+  .project-grid {
+    display: flex !important; /* Paksa jadi flex */
+    overflow-x: auto; /* Biar bisa geser kanan-kiri */
+    scroll-snap-type: x mandatory; /* Efek magnet */
+    gap: 0; /* Jarak antar slide */
+    padding: 0; /* Kasih ruang bawah */
+    margin-left: 0px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* Biar swipe di iPhone mulus */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    
+    /* Hilangkan batasan grid kolom */
+    grid-template-columns: none !important; 
+  }
+  
+  .projects {
+    margin-top: 0;
+    position: fixed;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+  }
+
+  .project-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; /* Efek magnet swipe */
+    gap: 20px;
+    padding: 20px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .project-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .project-item {
+    flex: 0 0 100vw; /* Setiap project ngambil 85% lebar layar */
+    scroll-snap-align: center; /* Berhenti di tengah */
+  }
+
+  .project-img {
+    width: 100%;
+    aspect-ratio: 16/10;
+  }
+  
+  .swipe-hint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 15px;
+    opacity: 0.6;
+  }
+
+  .swipe-hint span {
+    font-family: 'Courier New', monospace; /* Vibe industrial */
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #B7AB98;
+  }
+
+  .swipe-hint .arrow-down {
+    font-size: 14px;
+    color: #EB5939; /* Warna Oranye T2 ente */
+    animation: bounce 2s infinite; /* Biar ada gerak dikit */
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateX(0);}
+    40% {transform: translateX(5px);}
+    60% {transform: translateX(3px);}
+  }
+
+  /* 3. Pastikan Section Projects nempel bawah */
+  .projects {
+    margin-top: auto; /* Memastikan dia terdorong ke paling bawah flex container */
+    width: 100%;
+  }
+
+  .project-grid {
+    padding-bottom: 0; /* Rapikan padding */
+  }
+
+}
