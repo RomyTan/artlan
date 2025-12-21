@@ -280,11 +280,15 @@ body {
   body {
     display: block;
     min-height: 100vh;
-    padding: 0 20px;
+    padding: 0 15px;
+    overflow-x: hidden;
   }
 
   .navbar {
-    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
     width: 100%;
   }
 
@@ -296,12 +300,12 @@ body {
 
   .hero h1 .T1, 
   .hero h1 .T2 {
-    font-size: 72px; /* Perkecil font di HP biar nggak kepotong */
+    font-size: 64px; /* Perkecil font di HP biar nggak kepotong */
     line-height: 0.9;
   }
 
   .hero h1 .T3 {
-    font-size: 48px;
+    font-size: 42px;
     line-height: 1;
   }
 
@@ -337,7 +341,7 @@ body {
   .projects {
     margin-top: 0;
     position: fixed;
-    bottom: 5px;
+    bottom: 0;
     left: 0;
     width: 100%;
     z-index: 10;
@@ -358,13 +362,14 @@ body {
   }
 
   .project-item {
-    flex: 0 0 100vw; /* Setiap project ngambil 85% lebar layar */
+    flex: 0 0 100%; /* lebar layar */
     scroll-snap-align: center; /* Berhenti di tengah */
   }
 
   .project-img {
     width: 100%;
     aspect-ratio: 16/10;
+    max-height: 150px;
   }
   
   .swipe-hint {
