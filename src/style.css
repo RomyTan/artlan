@@ -285,11 +285,20 @@ body {
   }
 
   .swipe-hint {
-    display: none;
+    position: absolute;
+    /* Pake unit viewport height biar jaraknya proporsional sama tinggi layar */
+    bottom: 100%; 
+    left: 50%;
+    transform: translateX(-50%);
+    
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
-    opacity: 0.6;
+    width: max-content;
+    
+    /* Gunakan rem atau em untuk gap agar tetap fluid terhadap font-size */
+    gap: 0.5rem; 
+    padding-bottom: 1vh;
   }
 
   .swipe-hint span {
